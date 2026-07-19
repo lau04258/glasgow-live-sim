@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Glasgow Live Sim uses approved open data to explain city resilience scenarios.">
+  <meta name="theme-color" content="#122118">
+  <meta property="og:title" content="Glasgow Live Sim">
+  <meta property="og:description" content="Open-data Glasgow wildfire, smoke, and resilience scenario simulator.">
+  <title>{% block title %}Glasgow Live Sim{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav aria-label="Primary">
+      <a href="/" class="brand">Glasgow Live Sim</a>
+      <a href="/scenarios">Scenarios</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/data">Open-data register</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/accessibility">Accessibility</a>
+    </nav>
+  </header>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer>
+    <p>Prototype simulation for planning and public explanation. It is not an official emergency alert service.</p>
+    <p>Uses only approved open or explicitly reusable datasets; no personal data is required for V1.</p>
+  </footer>
+</body>
+</html>

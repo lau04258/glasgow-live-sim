@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Methodology · Glasgow Live Sim{% endblock %}
+{% block content %}
+<h1>Methodology and guardrails</h1>
+<p>Glasgow Live Sim keeps provenance, privacy, accessibility, and operational caveats visible throughout the site.</p>
+<ol class="steps">
+  {% for step in steps %}
+  <li><h2>{{ step.title }}</h2><p>{{ step.body }}</p></li>
+  {% endfor %}
+</ol>
+<section class="panel">
+  <h2>Architecture boundary</h2>
+  <p>FastAPI serves pages and JSON APIs. PostgreSQL/PostGIS is the production persistence target, but V1 demonstrator records remain static until a reviewed ingestion pipeline is added.</p>
+</section>
+{% endblock %}

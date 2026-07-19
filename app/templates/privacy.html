@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Privacy · Glasgow Live Sim{% endblock %}
+{% block content %}
+<h1>Privacy and analytics</h1>
+<p>Glasgow Live Sim does not require accounts, cookies, or personal data for V1.</p>
+<p>Analytics are {% if analytics %}enabled only when explicitly configured{% else %}disabled by default{% endif %}.</p>
+<h2>Data minimisation</h2>
+<p>Scenario pages use approved open data and static demonstrator assumptions. No visitor location, contact detail, or behavioural profile is needed to use the service.</p>
+{% endblock %}

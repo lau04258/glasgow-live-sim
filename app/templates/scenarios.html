@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Scenarios · Glasgow Live Sim{% endblock %}
+{% block content %}
+<h1>Scenario library</h1>
+<p>These demonstrators are planning narratives, not live emergency warnings. Each scenario links to its approved open-data provenance.</p>
+<div class="cards">
+  {% for scenario in scenarios %}
+  <article class="card">
+    <p class="badge">{{ scenario.status }} · {{ scenario.time_horizon }}</p>
+    <h2><a href="/scenarios/{{ scenario.id }}">{{ scenario.title }}</a></h2>
+    <p>{{ scenario.summary }}</p>
+    <dl>
+      <dt>Risk</dt><dd>{{ scenario.risk }}</dd>
+      <dt>Area</dt><dd>{{ scenario.area }}</dd>
+      <dt>Confidence</dt><dd>{{ scenario.confidence }}%</dd>
+      <dt>Datasets</dt><dd>{{ scenario.datasets | length }} approved sources</dd>
+    </dl>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

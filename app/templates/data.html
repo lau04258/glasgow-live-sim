@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Open-data register · Glasgow Live Sim{% endblock %}
+{% block content %}
+<h1>Open-data and licence register</h1>
+<p>Only datasets marked approved-open can be used by this V1 build. New data must be reviewed here before code or scenario use.</p>
+<table>
+  <thead><tr><th>Name</th><th>Publisher</th><th>Licence</th><th>Purpose</th><th>Personal data</th><th>Refresh</th></tr></thead>
+  <tbody>
+  {% for dataset in datasets %}
+    <tr><td><a href="{{ dataset.source_url }}">{{ dataset.name }}</a></td><td>{{ dataset.publisher }}</td><td>{{ dataset.licence }}</td><td>{{ dataset.purpose }}</td><td>{{ dataset.contains_personal_data }}</td><td>{{ dataset.refresh }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
