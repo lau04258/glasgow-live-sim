@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero" aria-labelledby="hero-title">
+  <p class="eyebrow">V1 resilience simulator</p>
+  <h1 id="hero-title">Understand Glasgow wildfire, smoke, and disruption scenarios before they escalate.</h1>
+  <p>Explore demonstrator scenarios with transparent provenance, privacy-first analytics, and human-readable confidence notes.</p>
+  <div class="actions">
+    <a class="button" href="/scenarios">Explore scenarios</a>
+    <a class="button button-secondary" href="/data">Review source licences</a>
+  </div>
+</section>
+<section aria-labelledby="metrics-title">
+  <h2 id="metrics-title">V1 readiness snapshot</h2>
+  <div class="metrics">
+    {% for metric in metrics %}
+    <article class="metric"><strong>{{ metric.value }}</strong><span>{{ metric.label }}</span><small>{{ metric.detail }}</small></article>
+    {% endfor %}
+  </div>
+</section>
+<section aria-labelledby="scenarios-title">
+  <h2 id="scenarios-title">Current demonstrator scenarios</h2>
+  <div class="cards">
+    {% for scenario in scenarios %}
+    <article class="card">
+      <p class="badge">{{ scenario.severity }} severity</p>
+      <h3><a href="/scenarios/{{ scenario.id }}">{{ scenario.title }}</a></h3>
+      <p>{{ scenario.summary }}</p>
+      <dl>
+        <dt>Area</dt><dd>{{ scenario.area }}</dd>
+        <dt>Confidence</dt><dd>{{ scenario.confidence }}%</dd>
+      </dl>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+<section aria-labelledby="acceptance-title" class="panel">
+  <h2 id="acceptance-title">V1 acceptance criteria</h2>
+  <ul>
+    <li>Open-data provenance is visible before any scenario is interpreted.</li>
+    <li>No personal data collection is required to use the simulator.</li>
+    <li>Core pages are keyboard accessible and semantic.</li>
+    <li>Production smoke checks verify health, SEO endpoints, API endpoints, and page rendering.</li>
+  </ul>
+</section>
+{% endblock %}

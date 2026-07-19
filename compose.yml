@@ -1,0 +1,26 @@
+services:
+  web:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://glasgow:glasgow@db:5432/glasgow_live_sim
+      ENVIRONMENT: production-like
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_DB: glasgow_live_sim
+      POSTGRES_USER: glasgow
+      POSTGRES_PASSWORD: glasgow
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U glasgow -d glasgow_live_sim"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - postgis-data:/var/lib/postgresql/data
+volumes:
+  postgis-data:

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ scenario.title }} · Glasgow Live Sim{% endblock %}
+{% block content %}
+<article class="scenario-detail">
+  <p class="badge">{{ scenario.status }} · {{ scenario.severity }} severity · {{ scenario.time_horizon }}</p>
+  <h1>{{ scenario.title }}</h1>
+  <p class="lede">{{ scenario.summary }}</p>
+  <dl class="summary-list">
+    <dt>Area</dt><dd>{{ scenario.area }}</dd>
+    <dt>Risk</dt><dd>{{ scenario.risk }}</dd>
+    <dt>Confidence</dt><dd>{{ scenario.confidence }}%</dd>
+    <dt>Last updated</dt><dd>{{ scenario.last_updated }}</dd>
+  </dl>
+  <h2>Recommended review actions</h2>
+  <ul>
+    {% for action in scenario.recommended_actions %}<li>{{ action }}</li>{% endfor %}
+  </ul>
+  <h2>Provenance</h2>
+  <p>Only approved open datasets are linked to this demonstrator.</p>
+  <div class="cards">
+    {% for dataset in provenance %}
+    <article class="card">
+      <h3><a href="{{ dataset.source_url }}">{{ dataset.name }}</a></h3>
+      <p>{{ dataset.publisher }} · {{ dataset.licence }}</p>
+      <p>{{ dataset.purpose }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</article>
+{% endblock %}
